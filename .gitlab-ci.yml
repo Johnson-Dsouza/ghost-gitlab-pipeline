@@ -1,0 +1,17 @@
+stages:
+  - download_html
+  - upload_artifact
+
+variables:
+  AWS_SERVER_IP: "http://Your-AWS-Server-IP"
+
+download_html:
+  stage: download_html
+  script:
+    - curl -o homepage.html $AWS_SERVER_IP
+
+upload_artifact:
+  stage: upload_artifact
+  artifacts:
+    paths:
+      - homepage.html
